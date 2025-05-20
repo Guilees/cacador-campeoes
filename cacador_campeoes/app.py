@@ -1,25 +1,19 @@
+import os
 import streamlit as st
 from braip_scraper import buscar_produtos_braip
 from utils import gerar_anuncio, salvar_favorito, carregar_favoritos
 
 st.set_page_config(page_title="Caçador de Campeões", layout="wide", page_icon="🕵️‍♂️")
 
-import os
-
-import os
-
+# Carregar CSS corretamente
 css_path = os.path.join(os.path.dirname(__file__), "..", "assets", "style.css")
-
 if os.path.exists(css_path):
     with open(css_path) as f:
-        st.markdown('<style>' + f.read() + '</style>', unsafe_allow_html=True)
+        st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
 else:
     st.warning("Arquivo de estilo (style.css) não encontrado.")
 
-        st.markdown('<style>' + f.read() + '</style>', unsafe_allow_html=True)
-else:
-    st.warning("Arquivo de estilo (style.css) não encontrado.")
-
+# Título e layout
 st.title("🕵️‍♂️ Caçador de Campeões")
 
 st.sidebar.header("Filtros de busca")
