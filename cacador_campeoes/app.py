@@ -4,7 +4,14 @@ from utils import gerar_anuncio, salvar_favorito, carregar_favoritos
 
 st.set_page_config(page_title="Caçador de Campeões", layout="wide", page_icon="🕵️‍♂️")
 
-st.markdown('<style>' + open('assets/style.css').read() + '</style>', unsafe_allow_html=True)
+import os
+
+if os.path.exists("assets/style.css"):
+    with open("assets/style.css") as f:
+        st.markdown('<style>' + f.read() + '</style>', unsafe_allow_html=True)
+else:
+    st.warning("Arquivo de estilo (style.css) não encontrado.")
+
 st.title("🕵️‍♂️ Caçador de Campeões")
 
 st.sidebar.header("Filtros de busca")
